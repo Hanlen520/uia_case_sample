@@ -6,10 +6,10 @@
 
 class ExtendAPI(object):
     def __init__(self, device, adb, log, origin_api):
-        # 调用uiautomator.device
+        # 调用uiautomator2 device
         self.device = device
-        # 调用adb命令
-        # 例如 self.adb('shell am start ...')
+        # 调用adb命令, 等同于 adb shell
+        # 例如 self.adb('am start ...')
         self.adb = adb
         # 打印分析日志
         self.log = log
@@ -25,8 +25,8 @@ class ExtendAPI(object):
         )
 
     def is_entry_exist(self, app_name):
-        self.device.press.home()
-        self.device.press.home()
+        self.device.press('home')
+        self.device.press('home')
         for _ in range(3):
             if self.device(text=app_name).exists:
                 return True
